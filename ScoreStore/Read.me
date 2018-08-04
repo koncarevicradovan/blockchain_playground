@@ -1,0 +1,31 @@
+Instructions to run this - in PoweShell
+1. truffle compile (compile the code)
+2. truffle migrate (to deply the contract)
+3. truffle console (to enter console and here you can write javascript code)
+4. var ss
+5. ScoreStore.deployed().then(function(deployed) {ss = deployed;}); (asiggn deployed contract to ss variable)
+6. ss.AddPersonScore('Radovan', 101); (add result for me)
+7. ss.GetScore.call('Radovan') (get the result for me)
+8. ss.AddPersonScore('Radovan', 101); (throws exception because I already exist in database)
+
+
+Deploy to production:
+module.exports = {
+   networks: {
+   development: {
+   host: "localhost",
+   port: 8545,
+   network_id: "*" // Match any network id
+  },
+  production: {
+   host: "bcldqa-dns-reg1.northeurope.cloudapp.azure.com",
+   port: 8545,
+   network_id: "*" // Match any network id
+  }
+ }
+};
+
+In truffle-config.js
+
+Where http://bcldqa-dns-reg1.northeurope.cloudapp.azure.com:8545 is address from https://portal.azure.com/#blade/HubsExtension/DeploymentDetailsBlade/outputs/id/%2Fsubscriptions%2F159ee703-3313-4be8-97a3-fc564f14fae4%2FresourceGroups%2Fblockchain%2Fproviders%2FMicrosoft.Resources%2Fdeployments%2Fmicrosoft-azure-blockchain.azure-blockchain-ether-20180724230947
+and we should remove http and port number.
